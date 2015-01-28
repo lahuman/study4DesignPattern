@@ -3,5 +3,28 @@ package kr.pe.lahuman.factory;
 /**
  * Created by lahuman on 2015. 1. 27..
  */
-public class SERVER {
+public class SERVER extends Computer {
+    private String ram;
+    private String hdd;
+    private String cpu;
+
+    public SERVER(String ram, String hdd, String cpu){
+        this.ram = ram;
+        this.hdd = hdd;
+        this.cpu = cpu;
+    }
+    @Override
+    public String getRAM() {
+        return this.ram;
+    }
+
+    @Override
+    public String getHDD() {
+        return this.hdd;
+    }
+
+    @Override
+    public String getCPU() {
+        return this.cpu;
+    }
 }

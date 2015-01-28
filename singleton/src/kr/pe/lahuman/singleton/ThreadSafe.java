@@ -5,17 +5,18 @@ package kr.pe.lahuman.singleton;
  */
 public class ThreadSafe {
     private ThreadSafe(){};
-    private static ThreadSafe threadSafe = null;
+    private volatile static ThreadSafe threadSafe = null;
     public static synchronized ThreadSafe getInstance(){
         if(threadSafe == null){
             threadSafe = new ThreadSafe();
         }
         return threadSafe;
     }
-    public static synchronized ThreadSafe getInstanceDoubleLocking(){
+    public static ThreadSafe getInstanceDoubleLocking(){
         if(threadSafe == null){
             synchronized (ThreadSafe.class){
-                threadSafe = new ThreadSafe();
+                if(threadSafe == null)
+                    threadSafe = new ThreadSafe();
             }
         }
         return threadSafe;
